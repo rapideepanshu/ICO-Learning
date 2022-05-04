@@ -1,14 +1,14 @@
 //SPDX-License-Identifier:UNLICENSED
-pragma solidity >=0.4.0 <0.8.0;
+pragma solidity ^0.8.4;
 
-import "openzeppelin-solidity/contracts/token/ERC20/DetailedERC20.sol";
-import "openzeppelin-solidity/contracts/token/ERC20/MintableToken.sol";
-import "openzeppelin-solidity/contracts/token/ERC20/PausableToken.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Token is MintableToken, PausableToken, DetailedERC20 {
-    constructor(
-        string memory _name,
-        string memory _symbol,
-        uint8 _decimals
-    ) public DetailedERC20(_name, _symbol, _decimals) {}
+contract Token is ERC20, Ownable, Pausable {
+    constructor(string memory _name, string memory _symbol)
+        public
+        ERC20(_name, _symbol)
+        Ownable()
+    {}
 }

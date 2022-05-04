@@ -1,17 +1,15 @@
 //SPDX-License-Identifier:UNLICENSED
-pragma solidity >=0.4.0 <0.8.0;
+pragma solidity ^0.8.4;
 
-import "openzeppelin-solidity/contracts/crowdsale/Crowdsale.sol";
-import "openzeppelin-solidity/contracts/crowdsale/emission/MintedCrowdsale.sol";
-import "openzeppelin-solidity/contracts/crowdsale/validation/CappedCrowdsale.sol";
-import "openzeppelin-solidity/contracts/crowdsale/validation/TimedCrowdsale.sol";
+import "./Crowdsale.sol";
+import "./CappedCrowdsale.sol";
+import "./MintedCrowdsale.sol";
 
-contract ExampleTokenCrowdsale is
-    Crowdsale,
-    MintedCrowdsale,
-    CappedCrowdsale,
-    TimedCrowdsale
-{
+import "./TimedCrowdsale.sol";
+
+// import "openzeppelin-solidity/contracts/crowdsale/distribution/RefundableCrowdsale.sol";
+
+contract ExampleTokenCrowdsale is Crowdsale, CappedCrowdsale, TimedCrowdsale {
     uint256 public investorMinCap = 20000000000000000000;
     uint256 public investorHardCap = 50000000000000000000;
 
@@ -19,32 +17,25 @@ contract ExampleTokenCrowdsale is
 
     constructor(
         uint256 _rate,
-        address _wallet,
+        address payable _wallet,
         ERC20 _token,
         uint256 _cap,
-        uint256 _startTime,
-        uint256 _endTime
+        uint256 _openingTime,
+        uint256 _closingTime
     )
         public
         Crowdsale(_rate, _wallet, _token)
         CappedCrowdsale(_cap)
-        TimedCrowdsale(_startTime, _endTime)
+        TimedCrowdsale(_openingTime, _closingTime)
     {}
-
-    function getUserContribution(address _beneficiary)
-        public
-        view
-        returns (uint256)
-    {
-        return contributions[_beneficiary];
-    }
 
     function _preValidatePurchase(address _beneficiary, uint256 _weiAmount)
         internal
+        override(Crowdsale, CappedCrowdsale, TimedCrowdsale)
     {
         super._preValidatePurchase(_beneficiary, _weiAmount);
         uint256 _existingContribution = contributions[_beneficiary];
-        uint256 _newContribution = _existingContribution.add(_weiAmount);
+        uint256 _newContribution = _existingContribution + (_weiAmount);
         require(
             _newContribution >= investorMinCap &&
                 _newContribution <= investorHardCap

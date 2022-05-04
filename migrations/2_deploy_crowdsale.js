@@ -1,6 +1,9 @@
 const Token = artifacts.require("./Token.sol");
 const ExampleTokenCrowdsale = artifacts.require("./ExampleTokenCrowdsale.sol");
 
+function ether(n) {
+  return new web3.utils.BN(web3.utils.toWei(n, "ether"));
+}
 const duration = {
   seconds: function(val) {
     return val;
@@ -30,17 +33,18 @@ module.exports = async function(deployer, network, accounts) {
   const date = new Date();
   const currentTime = date.getTime();
 
-  await deployer.deploy(Token, _name, _symbol, _decimals);
+  await deployer.deploy(Token, _name, _symbol);
   const deployedToken = await Token.deployed();
 
   const _rate = 500;
   const _wallet = accounts[0];
   const _token = deployedToken.address;
-  const _cap = 100;
+  const _cap = ether("100");
   const _startTime = currentTime;
   const _endTime = _startTime + duration.weeks(1);
+  const _goal = ether("90");
 
-  await deployer.deploy(
+  const crowdsale = await deployer.deploy(
     ExampleTokenCrowdsale,
     _rate,
     _wallet,
@@ -49,6 +53,11 @@ module.exports = async function(deployer, network, accounts) {
     _startTime,
     _endTime
   );
+  // console.log(crowdsale);
 
+  // await crowdsale.methods.buyTokens(network, {
+  //   value: ether("2"),
+  //   from: network,
+  // });
   return true;
 };
