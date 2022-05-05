@@ -66,7 +66,7 @@ contract Crowdsale {
 
 
         uint256 weiAmount = msg.value;
-
+ _preValidatePurchase(beneficiary, weiAmount);
         // calculate token amount to be created
         uint256 tokens = getTokenAmount(weiAmount);
 
@@ -124,5 +124,14 @@ contract Crowdsale {
         return withinPeriod && nonZeroPurchase;
     }
 
-
+ function _preValidatePurchase(
+    address _beneficiary,
+    uint256 _weiAmount
+  )
+    internal
+    virtual
+  {
+    require(_beneficiary != address(0));
+    require(_weiAmount != 0);
+  }
 }

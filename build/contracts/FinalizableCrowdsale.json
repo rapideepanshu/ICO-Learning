@@ -225,7 +225,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[],\"name\":\"Finalized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"purchaser\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TokenPurchase\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"endTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finalize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"hasEnded\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isFinalized\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isOpen\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract ERC20PresetMinterPauser\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"wallet\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"weiRaised\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"details\":\"Extension of Crowdsale where an owner can do extra work after finishing.\",\"kind\":\"dev\",\"methods\":{\"finalize()\":{\"details\":\"Must be called after crowdsale ends, to do some extra finalization work. Calls the contract's finalization function.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}},\"title\":\"FinalizableCrowdsale\",\"version\":1},\"userdoc\":{\"events\":{\"TokenPurchase(address,address,uint256,uint256)\":{\"notice\":\"event for token purchase logging\"}},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/crowdsale/FinalizableCrowdsale.sol\":\"FinalizableCrowdsale\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/AccessControl.sol\":{\"keccak256\":\"0xb4d87ee2ead4bd192b41c128f287d4b7f24b9e0cd740cc9b476881c461286007\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://861c3abaa2b388a0228469080470d2254e8e91fd09aa0abda8b9ef3babf03ee5\",\"dweb:/ipfs/QmZFg88WPesuMo6GMtf3fi9NHQ5tENYLDZsFQSWgoq13TN\"]},\"@openzeppelin/contracts/access/AccessControlEnumerable.sol\":{\"keccak256\":\"0x13f5e15f2a0650c0b6aaee2ef19e89eaf4870d6e79662d572a393334c1397247\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7ee05f28f549a5d6515e152580716b87636ed4bfab9812499a6e3803df88288b\",\"dweb:/ipfs/QmeEnhdwY1t5Y3YU5a4ffzgXuToydH2PNdNxV9W7dEPRQJ\"]},\"@openzeppelin/contracts/access/IAccessControl.sol\":{\"keccak256\":\"0x59ce320a585d7e1f163cd70390a0ef2ff9cec832e2aa544293a00692465a7a57\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bb2c137c343ef0c4c7ce7b18c1d108afdc9d315a04e48307288d2d05adcbde3a\",\"dweb:/ipfs/QmUxhrAQM3MM3FF5j7AtcXLXguWCJBHJ14BRdVtuoQc8Fh\"]},\"@openzeppelin/contracts/access/IAccessControlEnumerable.sol\":{\"keccak256\":\"0xba4459ab871dfa300f5212c6c30178b63898c03533a1ede28436f11546626676\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3dcc7b09bfa6e18aab262ca372f4a9b1fc82e294b430706a4e1378cf58e6a276\",\"dweb:/ipfs/QmT8oSAcesdctR15HMLhr2a1HRpXymxdjTfdtfTYJcj2N2\"]},\"@openzeppelin/contracts/security/Pausable.sol\":{\"keccak256\":\"0xe68ed7fb8766ed1e888291f881e36b616037f852b37d96877045319ad298ba87\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1d491a2ca79dbf44bc02e876e21a5847a2cbcc011188532ad8662cdc1c134a4e\",\"dweb:/ipfs/QmUQXhSV8ZvHLzfdG89ZNSh1nLrAYyjnNBLznJGwGcwVk8\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xe0c8b625a79bac0fe80f17cfb521e072805cc9cef1c96a5caf45b264e74812fa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://12fd1efc9ad061ef675bd50fb0c8e3c6f2952a09f8df0e3c688b8d81b8918838\",\"dweb:/ipfs/QmawN6PjTwy91pU7ANjCSgbsLc8TDA6hwu9GsFFaNSuhb5\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol\":{\"keccak256\":\"0x0d19410453cda55960a818e02bd7c18952a5c8fe7a3036e81f0d599f34487a7b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4c0f62d3d5bef22b5ca00cc3903e7de6152cb68d2d22401a463f373cda54c00f\",\"dweb:/ipfs/QmSfzjZux7LC7NW2f7rjCXTHeFMUCWERqDkhpCTBy7kxTe\"]},\"@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol\":{\"keccak256\":\"0x978847fbff92d66d27d8767402a90ba996970b1936b372406aa17f5492bd8dc5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1414cb92779420b50d3e796b47bad6ea800ef1805bc6f9bf35a3ccb4e17db3dc\",\"dweb:/ipfs/QmaMzwYqLiivfaWSgqeaAPboBtJjVD1hSrH48p7ExJZ7DG\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd\",\"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8\"]},\"@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol\":{\"keccak256\":\"0x2cd54808b851c4db22f459065af0b7a952262741a85a73923e7a660767cd7baa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://750c4a78e953fe92317bba7166afd0a4b7725723e5822ea1b92ffd4e72d2d36b\",\"dweb:/ipfs/QmZNyCSrdYXGQfmB6LkbX8R6y4gGZRNh1d2pJobYBpkaRF\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x32c202bd28995dd20c4347b7c6467a6d3241c74c8ad3edcbb610cd9205916c45\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8179c356adb19e70d6b31a1eedc8c5c7f0c00e669e2540f4099e3844c6074d30\",\"dweb:/ipfs/QmWFbivarEobbqhS1go64ootVuHfVohBseerYy9FTEd1W2\"]},\"@openzeppelin/contracts/utils/introspection/ERC165.sol\":{\"keccak256\":\"0xd10975de010d89fd1c78dc5e8a9a7e7f496198085c151648f20cba166b32582b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fb0048dee081f6fffa5f74afc3fb328483c2a30504e94a0ddd2a5114d731ec4d\",\"dweb:/ipfs/QmZptt1nmYoA5SgjwnSgWqgUSDgm4q52Yos3xhnMv3MV43\"]},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"@openzeppelin/contracts/utils/structs/EnumerableSet.sol\":{\"keccak256\":\"0xacac2065b3ed1facff1163435890d4a6bcdc474e857e8e2c91ae5fb50418f723\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://acd44ec097dd623f40870ca848c31deb02dca032ec9c56bd2e52ee103d35ce6d\",\"dweb:/ipfs/Qme3CuA45xCft72RjE6s4bmhffpe2NHvHULH9fh5oPbzBv\"]},\"project:/contracts/crowdsale/Crowdsale.sol\":{\"keccak256\":\"0x4a71541f4ea758669bcc8660ffabe6ed1970408cfe1017aacdd2148b1d52b7f7\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://050ef9db2f044533e59281c1da5674f2cd39f42fad0ecdb6249ff00fea33e400\",\"dweb:/ipfs/QmNSZBK7ou3ca8udt5YYftA7vSvqH8bfgw3zbzWA7gu3s1\"]},\"project:/contracts/crowdsale/FinalizableCrowdsale.sol\":{\"keccak256\":\"0xef54f10b5da926d6d212d3caf007641bcf463ff216e5440686dc6f9546b61c83\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b6f36fd675f8dc8c88eb187ece23ff5449197922c339f0737fd121760343dc83\",\"dweb:/ipfs/QmVhmfhtepk157SSECYNSedqhRZGk4ktvQybG5YY62t6MS\"]},\"project:/contracts/crowdsale/Ownable.sol\":{\"keccak256\":\"0xd6be7d4dfbe4b241a99244f10833c111f5361906ee2fe3ffa075ca2e6725e1ae\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://6cfa1d56d9deea06e565dc022b2fb278a5e464d0ed418e1f86c2eb0241a6a6c4\",\"dweb:/ipfs/QmYUumKCTKbdYMqUPmXfwbkHEE63ueGBoaXRKDbB7PhSea\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[],\"name\":\"Finalized\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"purchaser\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"TokenPurchase\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\"}],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"endTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finalize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"hasEnded\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isFinalized\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isOpen\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"token\",\"outputs\":[{\"internalType\":\"contract ERC20PresetMinterPauser\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"wallet\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"weiRaised\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"details\":\"Extension of Crowdsale where an owner can do extra work after finishing.\",\"kind\":\"dev\",\"methods\":{\"finalize()\":{\"details\":\"Must be called after crowdsale ends, to do some extra finalization work. Calls the contract's finalization function.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}},\"title\":\"FinalizableCrowdsale\",\"version\":1},\"userdoc\":{\"events\":{\"TokenPurchase(address,address,uint256,uint256)\":{\"notice\":\"event for token purchase logging\"}},\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/crowdsale/FinalizableCrowdsale.sol\":\"FinalizableCrowdsale\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/AccessControl.sol\":{\"keccak256\":\"0xb4d87ee2ead4bd192b41c128f287d4b7f24b9e0cd740cc9b476881c461286007\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://861c3abaa2b388a0228469080470d2254e8e91fd09aa0abda8b9ef3babf03ee5\",\"dweb:/ipfs/QmZFg88WPesuMo6GMtf3fi9NHQ5tENYLDZsFQSWgoq13TN\"]},\"@openzeppelin/contracts/access/AccessControlEnumerable.sol\":{\"keccak256\":\"0x13f5e15f2a0650c0b6aaee2ef19e89eaf4870d6e79662d572a393334c1397247\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7ee05f28f549a5d6515e152580716b87636ed4bfab9812499a6e3803df88288b\",\"dweb:/ipfs/QmeEnhdwY1t5Y3YU5a4ffzgXuToydH2PNdNxV9W7dEPRQJ\"]},\"@openzeppelin/contracts/access/IAccessControl.sol\":{\"keccak256\":\"0x59ce320a585d7e1f163cd70390a0ef2ff9cec832e2aa544293a00692465a7a57\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bb2c137c343ef0c4c7ce7b18c1d108afdc9d315a04e48307288d2d05adcbde3a\",\"dweb:/ipfs/QmUxhrAQM3MM3FF5j7AtcXLXguWCJBHJ14BRdVtuoQc8Fh\"]},\"@openzeppelin/contracts/access/IAccessControlEnumerable.sol\":{\"keccak256\":\"0xba4459ab871dfa300f5212c6c30178b63898c03533a1ede28436f11546626676\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3dcc7b09bfa6e18aab262ca372f4a9b1fc82e294b430706a4e1378cf58e6a276\",\"dweb:/ipfs/QmT8oSAcesdctR15HMLhr2a1HRpXymxdjTfdtfTYJcj2N2\"]},\"@openzeppelin/contracts/security/Pausable.sol\":{\"keccak256\":\"0xe68ed7fb8766ed1e888291f881e36b616037f852b37d96877045319ad298ba87\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1d491a2ca79dbf44bc02e876e21a5847a2cbcc011188532ad8662cdc1c134a4e\",\"dweb:/ipfs/QmUQXhSV8ZvHLzfdG89ZNSh1nLrAYyjnNBLznJGwGcwVk8\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xe0c8b625a79bac0fe80f17cfb521e072805cc9cef1c96a5caf45b264e74812fa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://12fd1efc9ad061ef675bd50fb0c8e3c6f2952a09f8df0e3c688b8d81b8918838\",\"dweb:/ipfs/QmawN6PjTwy91pU7ANjCSgbsLc8TDA6hwu9GsFFaNSuhb5\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34\",\"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr\"]},\"@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol\":{\"keccak256\":\"0x0d19410453cda55960a818e02bd7c18952a5c8fe7a3036e81f0d599f34487a7b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4c0f62d3d5bef22b5ca00cc3903e7de6152cb68d2d22401a463f373cda54c00f\",\"dweb:/ipfs/QmSfzjZux7LC7NW2f7rjCXTHeFMUCWERqDkhpCTBy7kxTe\"]},\"@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol\":{\"keccak256\":\"0x978847fbff92d66d27d8767402a90ba996970b1936b372406aa17f5492bd8dc5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://1414cb92779420b50d3e796b47bad6ea800ef1805bc6f9bf35a3ccb4e17db3dc\",\"dweb:/ipfs/QmaMzwYqLiivfaWSgqeaAPboBtJjVD1hSrH48p7ExJZ7DG\"]},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol\":{\"keccak256\":\"0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd\",\"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8\"]},\"@openzeppelin/contracts/token/ERC20/presets/ERC20PresetMinterPauser.sol\":{\"keccak256\":\"0x2cd54808b851c4db22f459065af0b7a952262741a85a73923e7a660767cd7baa\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://750c4a78e953fe92317bba7166afd0a4b7725723e5822ea1b92ffd4e72d2d36b\",\"dweb:/ipfs/QmZNyCSrdYXGQfmB6LkbX8R6y4gGZRNh1d2pJobYBpkaRF\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92\",\"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x32c202bd28995dd20c4347b7c6467a6d3241c74c8ad3edcbb610cd9205916c45\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8179c356adb19e70d6b31a1eedc8c5c7f0c00e669e2540f4099e3844c6074d30\",\"dweb:/ipfs/QmWFbivarEobbqhS1go64ootVuHfVohBseerYy9FTEd1W2\"]},\"@openzeppelin/contracts/utils/introspection/ERC165.sol\":{\"keccak256\":\"0xd10975de010d89fd1c78dc5e8a9a7e7f496198085c151648f20cba166b32582b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fb0048dee081f6fffa5f74afc3fb328483c2a30504e94a0ddd2a5114d731ec4d\",\"dweb:/ipfs/QmZptt1nmYoA5SgjwnSgWqgUSDgm4q52Yos3xhnMv3MV43\"]},\"@openzeppelin/contracts/utils/introspection/IERC165.sol\":{\"keccak256\":\"0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f\",\"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy\"]},\"@openzeppelin/contracts/utils/structs/EnumerableSet.sol\":{\"keccak256\":\"0xacac2065b3ed1facff1163435890d4a6bcdc474e857e8e2c91ae5fb50418f723\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://acd44ec097dd623f40870ca848c31deb02dca032ec9c56bd2e52ee103d35ce6d\",\"dweb:/ipfs/Qme3CuA45xCft72RjE6s4bmhffpe2NHvHULH9fh5oPbzBv\"]},\"project:/contracts/crowdsale/Crowdsale.sol\":{\"keccak256\":\"0x9400a769877d232e6bec907eca93a3d68b011dc6eea188e13dcbc3aaf4829c9a\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://fc4f2536ad1789385f54e8d9e8fcd9d664051501f34ad415275ecd3587958fe7\",\"dweb:/ipfs/QmWR1wxGeEfEKW9PJnZroGY6YZ2APrTDgqxzvL8127FecD\"]},\"project:/contracts/crowdsale/FinalizableCrowdsale.sol\":{\"keccak256\":\"0xef54f10b5da926d6d212d3caf007641bcf463ff216e5440686dc6f9546b61c83\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://b6f36fd675f8dc8c88eb187ece23ff5449197922c339f0737fd121760343dc83\",\"dweb:/ipfs/QmVhmfhtepk157SSECYNSedqhRZGk4ktvQybG5YY62t6MS\"]},\"project:/contracts/crowdsale/Ownable.sol\":{\"keccak256\":\"0xd6be7d4dfbe4b241a99244f10833c111f5361906ee2fe3ffa075ca2e6725e1ae\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://6cfa1d56d9deea06e565dc022b2fb278a5e464d0ed418e1f86c2eb0241a6a6c4\",\"dweb:/ipfs/QmYUumKCTKbdYMqUPmXfwbkHEE63ueGBoaXRKDbB7PhSea\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -248,7 +248,7 @@
         1562
       ],
       "Crowdsale": [
-        2920
+        3008
       ],
       "ERC165": [
         1789
@@ -269,7 +269,7 @@
         2400
       ],
       "FinalizableCrowdsale": [
-        2967
+        3055
       ],
       "IAccessControl": [
         517
@@ -287,7 +287,7 @@
         1404
       ],
       "Ownable": [
-        3028
+        3116
       ],
       "Pausable": [
         634
@@ -296,12 +296,12 @@
         1765
       ]
     },
-    "id": 2968,
+    "id": 3056,
     "license": "UNLICENSED",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2922,
+        "id": 3010,
         "literals": [
           "solidity",
           "^",
@@ -314,11 +314,11 @@
       {
         "absolutePath": "project:/contracts/crowdsale/Ownable.sol",
         "file": "./Ownable.sol",
-        "id": 2923,
+        "id": 3011,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2968,
-        "sourceUnit": 3029,
+        "scope": 3056,
+        "sourceUnit": 3117,
         "src": "62:23:21",
         "symbolAliases": [],
         "unitAlias": ""
@@ -326,11 +326,11 @@
       {
         "absolutePath": "project:/contracts/crowdsale/Crowdsale.sol",
         "file": "./Crowdsale.sol",
-        "id": 2924,
+        "id": 3012,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 2968,
-        "sourceUnit": 2921,
+        "scope": 3056,
+        "sourceUnit": 3009,
         "src": "86:25:21",
         "symbolAliases": [],
         "unitAlias": ""
@@ -340,25 +340,25 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 2926,
+              "id": 3014,
               "name": "Crowdsale",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 2920,
+              "referencedDeclaration": 3008,
               "src": "278:9:21"
             },
-            "id": 2927,
+            "id": 3015,
             "nodeType": "InheritanceSpecifier",
             "src": "278:9:21"
           },
           {
             "baseName": {
-              "id": 2928,
+              "id": 3016,
               "name": "Ownable",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 3028,
+              "referencedDeclaration": 3116,
               "src": "289:7:21"
             },
-            "id": 2929,
+            "id": 3017,
             "nodeType": "InheritanceSpecifier",
             "src": "289:7:21"
           }
@@ -368,17 +368,17 @@
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 2925,
+          "id": 3013,
           "nodeType": "StructuredDocumentation",
           "src": "113:122:21",
           "text": " @title FinalizableCrowdsale\n @dev Extension of Crowdsale where an owner can do extra work\n after finishing."
         },
         "fullyImplemented": false,
-        "id": 2967,
+        "id": 3055,
         "linearizedBaseContracts": [
-          2967,
-          3028,
-          2920
+          3055,
+          3116,
+          3008
         ],
         "name": "FinalizableCrowdsale",
         "nameLocation": "254:20:21",
@@ -387,12 +387,12 @@
           {
             "constant": false,
             "functionSelector": "8d4e4083",
-            "id": 2932,
+            "id": 3020,
             "mutability": "mutable",
             "name": "isFinalized",
             "nameLocation": "315:11:21",
             "nodeType": "VariableDeclaration",
-            "scope": 2967,
+            "scope": 3055,
             "src": "303:31:21",
             "stateVariable": true,
             "storageLocation": "default",
@@ -401,7 +401,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 2930,
+              "id": 3018,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "303:4:21",
@@ -412,7 +412,7 @@
             },
             "value": {
               "hexValue": "66616c7365",
-              "id": 2931,
+              "id": 3019,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -430,12 +430,12 @@
           },
           {
             "anonymous": false,
-            "id": 2934,
+            "id": 3022,
             "name": "Finalized",
             "nameLocation": "347:9:21",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2933,
+              "id": 3021,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "356:2:21"
@@ -444,7 +444,7 @@
           },
           {
             "body": {
-              "id": 2960,
+              "id": 3048,
               "nodeType": "Block",
               "src": "554:146:21",
               "statements": [
@@ -452,7 +452,7 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 2942,
+                        "id": 3030,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -462,11 +462,11 @@
                         "prefix": true,
                         "src": "572:12:21",
                         "subExpression": {
-                          "id": 2941,
+                          "id": 3029,
                           "name": "isFinalized",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2932,
+                          "referencedDeclaration": 3020,
                           "src": "573:11:21",
                           "typeDescriptions": {
                             "typeIdentifier": "t_bool",
@@ -486,7 +486,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 2940,
+                      "id": 3028,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -500,7 +500,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 2943,
+                    "id": 3031,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -515,7 +515,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2944,
+                  "id": 3032,
                   "nodeType": "ExpressionStatement",
                   "src": "564:21:21"
                 },
@@ -526,18 +526,18 @@
                         "arguments": [],
                         "expression": {
                           "argumentTypes": [],
-                          "id": 2946,
+                          "id": 3034,
                           "name": "hasEnded",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2828,
+                          "referencedDeclaration": 2893,
                           "src": "603:8:21",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$__$returns$_t_bool_$",
                             "typeString": "function () view returns (bool)"
                           }
                         },
-                        "id": 2947,
+                        "id": 3035,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -560,7 +560,7 @@
                           "typeString": "bool"
                         }
                       ],
-                      "id": 2945,
+                      "id": 3033,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -574,7 +574,7 @@
                         "typeString": "function (bool) pure"
                       }
                     },
-                    "id": 2948,
+                    "id": 3036,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -589,7 +589,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2949,
+                  "id": 3037,
                   "nodeType": "ExpressionStatement",
                   "src": "595:19:21"
                 },
@@ -598,18 +598,18 @@
                     "arguments": [],
                     "expression": {
                       "argumentTypes": [],
-                      "id": 2950,
+                      "id": 3038,
                       "name": "finalization",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2966,
+                      "referencedDeclaration": 3054,
                       "src": "625:12:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$__$returns$__$",
                         "typeString": "function ()"
                       }
                     },
-                    "id": 2951,
+                    "id": 3039,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -624,7 +624,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2952,
+                  "id": 3040,
                   "nodeType": "ExpressionStatement",
                   "src": "625:14:21"
                 },
@@ -633,18 +633,18 @@
                     "arguments": [],
                     "expression": {
                       "argumentTypes": [],
-                      "id": 2953,
+                      "id": 3041,
                       "name": "Finalized",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2934,
+                      "referencedDeclaration": 3022,
                       "src": "654:9:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$__$returns$__$",
                         "typeString": "function ()"
                       }
                     },
-                    "id": 2954,
+                    "id": 3042,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -659,23 +659,23 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 2955,
+                  "id": 3043,
                   "nodeType": "EmitStatement",
                   "src": "649:16:21"
                 },
                 {
                   "expression": {
-                    "id": 2958,
+                    "id": 3046,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 2956,
+                      "id": 3044,
                       "name": "isFinalized",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 2932,
+                      "referencedDeclaration": 3020,
                       "src": "677:11:21",
                       "typeDescriptions": {
                         "typeIdentifier": "t_bool",
@@ -686,7 +686,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 2957,
+                      "id": 3045,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -706,31 +706,31 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 2959,
+                  "id": 3047,
                   "nodeType": "ExpressionStatement",
                   "src": "677:16:21"
                 }
               ]
             },
             "documentation": {
-              "id": 2935,
+              "id": 3023,
               "nodeType": "StructuredDocumentation",
               "src": "365:147:21",
               "text": " @dev Must be called after crowdsale ends, to do some extra finalization\n work. Calls the contract's finalization function."
             },
             "functionSelector": "4bb278f3",
-            "id": 2961,
+            "id": 3049,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
-                "id": 2938,
+                "id": 3026,
                 "kind": "modifierInvocation",
                 "modifierName": {
-                  "id": 2937,
+                  "id": 3025,
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 3000,
+                  "referencedDeclaration": 3088,
                   "src": "544:9:21"
                 },
                 "nodeType": "ModifierInvocation",
@@ -741,18 +741,18 @@
             "nameLocation": "526:8:21",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2936,
+              "id": 3024,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "534:2:21"
             },
             "returnParameters": {
-              "id": 2939,
+              "id": 3027,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "554:0:21"
             },
-            "scope": 2967,
+            "scope": 3055,
             "src": "517:183:21",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -760,18 +760,18 @@
           },
           {
             "body": {
-              "id": 2965,
+              "id": 3053,
               "nodeType": "Block",
               "src": "949:2:21",
               "statements": []
             },
             "documentation": {
-              "id": 2962,
+              "id": 3050,
               "nodeType": "StructuredDocumentation",
               "src": "706:197:21",
               "text": " @dev Can be overridden to add finalization logic. The overriding function\n should call super.finalization() to ensure the chain of finalization is\n executed entirely."
             },
-            "id": 2966,
+            "id": 3054,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -779,25 +779,25 @@
             "nameLocation": "917:12:21",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2963,
+              "id": 3051,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "929:2:21"
             },
             "returnParameters": {
-              "id": 2964,
+              "id": 3052,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "949:0:21"
             },
-            "scope": 2967,
+            "scope": 3055,
             "src": "908:43:21",
             "stateMutability": "nonpayable",
             "virtual": true,
             "visibility": "internal"
           }
         ],
-        "scope": 2968,
+        "scope": 3056,
         "src": "236:717:21",
         "usedErrors": []
       }
@@ -810,7 +810,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.7",
-  "updatedAt": "2022-05-05T09:55:42.162Z",
+  "updatedAt": "2022-05-05T11:37:39.627Z",
   "devdoc": {
     "details": "Extension of Crowdsale where an owner can do extra work after finishing.",
     "kind": "dev",

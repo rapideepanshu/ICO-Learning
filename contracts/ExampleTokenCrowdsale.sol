@@ -4,9 +4,14 @@ pragma solidity ^0.8.4;
 import "./crowdsale/CappedCrowdsale.sol";
 import "./crowdsale/FinalizableCrowdsale.sol";
 import "./crowdsale/RefundableCrowdsale.sol";
+import "./crowdsale/WhitelistedCrowdsale.sol";
 import "./Token.sol";
 
-contract ExampleTokenCrowdsale is CappedCrowdsale, FinalizableCrowdsale ,RefundableCrowdsale{
+contract ExampleTokenCrowdsale is CappedCrowdsale, FinalizableCrowdsale ,RefundableCrowdsale,WhitelistedCrowdsale{
+    
+      uint256 public investorMinCap = 2000000000000000;
+  uint256 public investorHardCap = 50000000000000000000;
+  mapping(address => uint256) public contributions;
     constructor(
         uint256 _startTime,
         uint256 _endTime,
@@ -79,4 +84,19 @@ contract ExampleTokenCrowdsale is CappedCrowdsale, FinalizableCrowdsale ,Refunda
     function finalization() internal override(FinalizableCrowdsale,RefundableCrowdsale) {
         super.finalization();
     }
+
+      function _preValidatePurchase(
+    address _beneficiary,
+    uint256 _weiAmount
+  )
+    internal
+   override(WhitelistedCrowdsale,Crowdsale)
+  {
+    super._preValidatePurchase(_beneficiary, _weiAmount);
+    uint256 _existingContribution = contributions[_beneficiary];
+    uint256 _newContribution = _existingContribution+(_weiAmount);
+    require(_newContribution >= investorMinCap && _newContribution <= investorHardCap);
+    contributions[_beneficiary] = _newContribution;
+  }
+
 }

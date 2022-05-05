@@ -59,6 +59,7 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2, addr3]) {
     );
 
     token = await Token.at(await crowdsale.token());
+    await crowdsale.addManyToWhitelist([addr1, addr2]);
   });
 
   it("should create crowdsale with correct parameters", async function() {
@@ -121,7 +122,7 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2, addr3]) {
   });
 
   describe("when the goal is not reached", function() {
-    it("handles goal reached", async function() {
+    it("handles goal not reached", async function() {
       const goalReached = await crowdsale.goalReached();
       goalReached.should.be.false;
     });
@@ -134,6 +135,17 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2, addr3]) {
       await crowdsale.buyTokens(addr1, { value: ether("6"), from: addr1 });
       const goalReached = await crowdsale.goalReached();
       goalReached.should.be.true;
+    });
+  });
+
+  describe("whitelisted crowdsale", function() {
+    it("rejects contributions from non-whitelisted investors", async function() {
+      await advanceTimeAndBlock(duration.weeks(1));
+
+      const notWhitelisted = _;
+      await crowdsale
+        .buyTokens(notWhitelisted, { value: ether("1"), from: notWhitelisted })
+        .should.be.rejectedWith("revert");
     });
   });
 });
