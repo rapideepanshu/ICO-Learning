@@ -6,10 +6,16 @@ import "./CappedCrowdsale.sol";
 import "./MintedCrowdsale.sol";
 
 import "./TimedCrowdsale.sol";
+import "./distribution/RefundableCrowdsale.sol";
 
 // import "openzeppelin-solidity/contracts/crowdsale/distribution/RefundableCrowdsale.sol";
 
-contract ExampleTokenCrowdsale is Crowdsale, CappedCrowdsale, TimedCrowdsale {
+contract ExampleTokenCrowdsale is
+    Crowdsale,
+    CappedCrowdsale,
+    TimedCrowdsale,
+    RefundableCrowdsale
+{
     uint256 public investorMinCap = 20000000000000000000;
     uint256 public investorHardCap = 50000000000000000000;
 
@@ -21,13 +27,17 @@ contract ExampleTokenCrowdsale is Crowdsale, CappedCrowdsale, TimedCrowdsale {
         ERC20 _token,
         uint256 _cap,
         uint256 _openingTime,
-        uint256 _closingTime
+        uint256 _closingTime,
+        uint256 _goal
     )
         public
         Crowdsale(_rate, _wallet, _token)
         CappedCrowdsale(_cap)
         TimedCrowdsale(_openingTime, _closingTime)
-    {}
+        RefundableCrowdsale(_goal)
+    {
+        require(_goal <= _cap);
+    }
 
     function _preValidatePurchase(address _beneficiary, uint256 _weiAmount)
         internal
@@ -42,4 +52,10 @@ contract ExampleTokenCrowdsale is Crowdsale, CappedCrowdsale, TimedCrowdsale {
         );
         contributions[_beneficiary] = _newContribution;
     }
+
+    function _forwardFunds()
+        internal
+        virtual
+        override(Crowdsale, RefundableCrowdsale)
+    {}
 }

@@ -40,7 +40,7 @@ module.exports = async function(deployer, network, accounts) {
   const _wallet = accounts[0];
   const _token = deployedToken.address;
   const _cap = ether("100");
-  const _startTime = currentTime;
+  const _startTime = currentTime + duration.weeks(1);
   const _endTime = _startTime + duration.weeks(1);
   const _goal = ether("90");
 
@@ -51,13 +51,13 @@ module.exports = async function(deployer, network, accounts) {
     _token,
     _cap,
     _startTime,
-    _endTime
+    _endTime,
+    _goal
   );
   // console.log(crowdsale);
 
-  // await crowdsale.methods.buyTokens(network, {
-  //   value: ether("2"),
-  //   from: network,
-  // });
+  const open = await crowdsale.cap();
+  console.log(open);
+
   return true;
 };

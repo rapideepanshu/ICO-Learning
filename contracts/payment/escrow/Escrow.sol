@@ -2,7 +2,7 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/math/Math.sol";
 import "../../ownership/Secondary.sol";
-import "../../utils/Address.sol";
+import "@openzeppelin/contracts/utils/Address.sol";
 
 /**
  * @title Escrow
@@ -18,7 +18,6 @@ import "../../utils/Address.sol";
  * to the escrow's deposit and withdraw.
  */
 contract Escrow is Secondary {
-    using SafeMath for uint256;
     using Address for address payable;
 
     event Deposited(address indexed payee, uint256 weiAmount);
@@ -34,9 +33,9 @@ contract Escrow is Secondary {
      * @dev Stores the sent amount as credit to be withdrawn.
      * @param payee The destination address of the funds.
      */
-    function deposit(address payee) public payable onlyPrimary {
+    function deposit(address payee) public payable virtual onlyPrimary {
         uint256 amount = msg.value;
-        _deposits[payee] = _deposits[payee].add(amount);
+        _deposits[payee] = (_deposits[payee]) + (amount);
 
         emit Deposited(payee, amount);
     }
@@ -52,7 +51,7 @@ contract Escrow is Secondary {
      *
      * @param payee The address whose funds will be withdrawn and transferred to.
      */
-    function withdraw(address payable payee) public onlyPrimary {
+    function withdraw(address payable payee) public virtual onlyPrimary {
         uint256 payment = _deposits[payee];
 
         _deposits[payee] = 0;

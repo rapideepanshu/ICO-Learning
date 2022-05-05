@@ -1,10 +1,10 @@
 pragma solidity ^0.8.0;
-import "../GSN/Context.sol";
+import "@openzeppelin/contracts/utils/Context.sol";
 
 /**
  * @dev A Secondary contract can only be used by its primary account (the one that created it).
  */
-abstract contract Secondary is Context {
+contract Secondary is Context {
     address private _primary;
 
     /**
@@ -15,7 +15,7 @@ abstract contract Secondary is Context {
     /**
      * @dev Sets the primary account to the one that is creating the Secondary contract.
      */
-    constructor() internal {
+    constructor() {
         address msgSender = _msgSender();
         _primary = msgSender;
         emit PrimaryTransferred(msgSender);

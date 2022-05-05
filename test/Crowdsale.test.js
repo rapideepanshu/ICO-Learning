@@ -1,6 +1,6 @@
 const BN = require("bn.js");
 const { duration, increaseTimeTo } = require("./helpers/increaseTime");
-
+const { advanceBlock } = require("./helpers/advanceToBlock");
 require("chai")
   .use(require("chai-as-promised"))
   .use(require("chai-bn")(BN))
@@ -12,10 +12,10 @@ const ExampleTokenCrowdsale = artifacts.require("ExampleTokenCrowdsale");
 function ether(n) {
   return new web3.utils.BN(web3.utils.toWei(n, "ether"));
 }
-async function currentTime() {
-  const block = await web3.eth.getBlock();
+const currentTime = async () => {
+  const block = await web3.eth.getBlock("latest");
   return block.timestamp;
-}
+};
 contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2]) {
   let name;
   let symbol;
@@ -29,13 +29,9 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2]) {
   let endTime;
   let minimumcap;
   let maximumcap;
-  let vaultAddress;
-  let vault;
   let goal;
-
   before(async function() {
-    // Transfer extra ether to investor1's account for testing
-    await web3.eth.sendTransaction({ from: _, to: addr1, value: ether("25") });
+    await advanceBlock();
   });
 
   beforeEach(async function() {
@@ -45,12 +41,12 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2]) {
 
     token = await Token.new(name, symbol);
 
-    rate = new BN(500);
+    rate = new BN(10);
     _wallet = wallet;
     cap = ether("19");
     goal = ether("15");
     startTime = (await currentTime()) + duration.weeks(1);
-    endTime = startTime + duration.weeks(1);
+    endTime = startTime + duration.weeks(3);
     minimumcap = ether("0.002");
     maximumcap = ether("20");
 
@@ -58,15 +54,15 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2]) {
       rate,
       _wallet,
       token.address,
-      cap
+      cap,
+      startTime,
+      endTime,
+      goal
     );
 
     await token.paused();
 
     await token.transferOwnership(crowdsale.address);
-    // vaultAddress = await crowdsale.vault();
-    // vault = RefundVault.at(vaultAddress);
-    // await increaseTimeTo(openingTime + 1);
   });
 
   describe("crowdsale", function() {
@@ -106,8 +102,13 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2]) {
 
   describe("when max cap reached", function() {
     it("rejects the transaction", async function() {
+      await increaseTimeTo(startTime + 1);
+
       const value1 = ether("2");
-      await crowdsale.buyTokens(addr1, { value: value1, from: addr1 });
+      await crowdsale.buyTokens(addr2, {
+        value: value1,
+        from: addr2,
+      });
 
       //   const value2 = ether("20");
       //   await crowdsale
@@ -116,12 +117,12 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2]) {
     });
   });
 
-  // describe("timed ICO", function() {
-  //   it("is closed", async function() {
-  //     const isClosed = await crowdsale.hasClosed();
-  //     isClosed.should.be.false;
-  //   });
-  // });
+  describe("timed ICO", function() {
+    it("is closed", async function() {
+      const isClosed = await crowdsale.hasClosed();
+      isClosed.should.be.false;
+    });
+  });
 
   // describe("when the total contributions exceed the investor hard cap", function() {
   //   it("rejects the transaction", async function() {

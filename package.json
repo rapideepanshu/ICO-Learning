@@ -41,6 +41,7 @@
     "web3-utils": "^1.0.0-beta.34"
   },
   "devDependencies": {
+    "@openzeppelin/test-helpers": "^0.5.15",
     "chai-bn": "^0.3.1"
   }
 }
