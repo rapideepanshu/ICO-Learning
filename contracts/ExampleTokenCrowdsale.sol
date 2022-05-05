@@ -1,61 +1,82 @@
 //SPDX-License-Identifier:UNLICENSED
 pragma solidity ^0.8.4;
 
-import "./Crowdsale.sol";
-import "./CappedCrowdsale.sol";
-import "./MintedCrowdsale.sol";
+import "./crowdsale/CappedCrowdsale.sol";
+import "./crowdsale/FinalizableCrowdsale.sol";
+import "./crowdsale/RefundableCrowdsale.sol";
+import "./Token.sol";
 
-import "./TimedCrowdsale.sol";
-import "./distribution/RefundableCrowdsale.sol";
-
-// import "openzeppelin-solidity/contracts/crowdsale/distribution/RefundableCrowdsale.sol";
-
-contract ExampleTokenCrowdsale is
-    Crowdsale,
-    CappedCrowdsale,
-    TimedCrowdsale,
-    RefundableCrowdsale
-{
-    uint256 public investorMinCap = 20000000000000000000;
-    uint256 public investorHardCap = 50000000000000000000;
-
-    mapping(address => uint256) public contributions;
-
+contract ExampleTokenCrowdsale is CappedCrowdsale, FinalizableCrowdsale ,RefundableCrowdsale{
     constructor(
+        uint256 _startTime,
+        uint256 _endTime,
         uint256 _rate,
-        address payable _wallet,
-        ERC20 _token,
         uint256 _cap,
-        uint256 _openingTime,
-        uint256 _closingTime,
+        address payable _wallet,
+        string memory _name,
+        string memory _symbol,
         uint256 _goal
     )
-        public
-        Crowdsale(_rate, _wallet, _token)
         CappedCrowdsale(_cap)
-        TimedCrowdsale(_openingTime, _closingTime)
         RefundableCrowdsale(_goal)
+        Crowdsale(_startTime, _endTime, _rate, _wallet, _name, _symbol)
     {
-        require(_goal <= _cap);
+        require(_goal<=_cap);
     }
 
-    function _preValidatePurchase(address _beneficiary, uint256 _weiAmount)
+    // Create a custom token to mint instead of the default MintableToken
+    function createTokenContract(string memory _name, string memory _symbol)
         internal
-        override(Crowdsale, CappedCrowdsale, TimedCrowdsale)
+        override
+        returns (ERC20PresetMinterPauser)
     {
-        super._preValidatePurchase(_beneficiary, _weiAmount);
-        uint256 _existingContribution = contributions[_beneficiary];
-        uint256 _newContribution = _existingContribution + (_weiAmount);
-        require(
-            _newContribution >= investorMinCap &&
-                _newContribution <= investorHardCap
-        );
-        contributions[_beneficiary] = _newContribution;
+        return new Token(_name, _symbol);
     }
 
-    function _forwardFunds()
+    // Override to indicate when the crowdsale ends and does not accept any more contributions
+    // Checks endTime by default, plus cap from CappedCrowdsale
+    function hasEnded()
+        public
+        view
+        override(Crowdsale, CappedCrowdsale)
+        returns (bool)
+    {
+        return super.hasEnded();
+    }
+
+    // Override this method to have a way to add business logic to your crowdsale when buying
+    // Returns weiAmount times rate by default
+    function getTokenAmount(uint256 weiAmount)
         internal
-        virtual
-        override(Crowdsale, RefundableCrowdsale)
-    {}
+        view
+        override
+        returns (uint256)
+    {
+        return super.getTokenAmount(weiAmount);
+    }
+
+    // Override to create custom fund forwarding mechanisms
+    // Forwards funds to the specified wallet by default
+    function forwardFunds() internal override(Crowdsale,RefundableCrowdsale) {
+        return super.forwardFunds();
+    }
+
+    // Criteria for accepting a purchase
+    // Make sure to call super.validPurchase(), or all the criteria from parents will be overwritten.
+    function validPurchase()
+        internal
+        view
+        override(Crowdsale, CappedCrowdsale)
+        returns (bool)
+    {
+        return super.validPurchase();
+    }
+
+    // Override to execute any logic once the crowdsale finalizes
+    // Requires a call to the public finalize method, only after the sale hasEnded
+    // Remember that super.finalization() calls the token finishMinting(),
+    // so no new tokens can be minted after that
+    function finalization() internal override(FinalizableCrowdsale,RefundableCrowdsale) {
+        super.finalization();
+    }
 }

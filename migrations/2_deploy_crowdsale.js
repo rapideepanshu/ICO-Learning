@@ -33,31 +33,29 @@ module.exports = async function(deployer, network, accounts) {
   const date = new Date();
   const currentTime = date.getTime();
 
-  await deployer.deploy(Token, _name, _symbol);
-  const deployedToken = await Token.deployed();
-
   const _rate = 500;
   const _wallet = accounts[0];
-  const _token = deployedToken.address;
+
   const _cap = ether("100");
+  const _goal = ether("80");
   const _startTime = currentTime + duration.weeks(1);
   const _endTime = _startTime + duration.weeks(1);
-  const _goal = ether("90");
 
   const crowdsale = await deployer.deploy(
     ExampleTokenCrowdsale,
-    _rate,
-    _wallet,
-    _token,
-    _cap,
     _startTime,
     _endTime,
+    _rate,
+    _cap,
+    _wallet,
+    _name,
+    _symbol,
     _goal
   );
   // console.log(crowdsale);
 
-  const open = await crowdsale.cap();
-  console.log(open);
+  // const open = await crowdsale.cap();
+  // console.log(open);
 
   return true;
 };
