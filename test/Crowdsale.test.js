@@ -33,10 +33,6 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2, addr3]) {
   let startTime;
   let endTime;
   let goal;
-  // before(async function() {
-  //   await advanceTimeAndBlock(1);
-  //   console.log("current", await currentTime());
-  // });
 
   beforeEach(async function() {
     name = "ICO Token";
@@ -49,7 +45,7 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2, addr3]) {
     endTime = startTime + duration.weeks(1);
     afterEndTime = endTime + duration.seconds(1);
 
-    goal = ether("18");
+    goal = ether("12");
 
     crowdsale = await ExampleTokenCrowdsale.new(
       startTime,
@@ -124,14 +120,18 @@ contract("ExampleTokenCrowdsale", function([_, wallet, addr1, addr2, addr3]) {
       .should.be.rejectedWith("revert");
   });
 
-  describe("when the goal is reached", function() {
-    beforeEach(async function() {
-      let walletBalance = await web3.eth.getBalance(wallet);
-
-      await crowdsale.buyTokens(addr1, { value: ether("9"), from: addr1 });
-      await crowdsale.buyTokens(addr2, { value: ether("9"), from: addr2 });
-    });
+  describe("when the goal is not reached", function() {
     it("handles goal reached", async function() {
+      const goalReached = await crowdsale.goalReached();
+      goalReached.should.be.false;
+    });
+  });
+
+  describe("when the goal is  reached", function() {
+    it("handles goal reached", async function() {
+      await advanceTimeAndBlock(duration.weeks(1));
+      await crowdsale.buyTokens(addr1, { value: ether("6"), from: addr1 });
+      await crowdsale.buyTokens(addr1, { value: ether("6"), from: addr1 });
       const goalReached = await crowdsale.goalReached();
       goalReached.should.be.true;
     });
